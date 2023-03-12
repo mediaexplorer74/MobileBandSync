@@ -10,6 +10,7 @@ using MobileBandSync.Common;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -88,7 +89,9 @@ namespace MobileBandSync.Data
       }
       catch (Exception ex)
       {
+         Debug.WriteLine(ex.Message);
       }
+
       return (IEnumerable<WorkoutItem>) WorkoutDataSource._workoutDataSource.Workouts;
     }
 
@@ -332,7 +335,9 @@ namespace MobileBandSync.Data
       }
       catch (Exception ex)
       {
+                Debug.WriteLine(ex.Message);
       }
+      
       try
       {
         if (this.SensorLogEngine.Sequences.Count > 0)
@@ -342,6 +347,7 @@ namespace MobileBandSync.Data
       }
       catch (Exception ex)
       {
+                Debug.WriteLine(ex.Message);
       }
       return (List<Workout>) null;
     }
@@ -383,7 +389,9 @@ namespace MobileBandSync.Data
       }
       catch (Exception ex)
       {
+                Debug.WriteLine(ex.Message);
       }
+
       try
       {
         if (this.SensorLogEngine.Sequences.Count > 0)
@@ -392,7 +400,9 @@ namespace MobileBandSync.Data
       }
       catch (Exception ex)
       {
+                Debug.WriteLine(ex.Message);
       }
+      
       return (List<Workout>) null;
     }
 

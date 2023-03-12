@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿// WorkoutFilterData.cs
 // Type: MobileBandSync.Common.WorkoutFilterData
 // Assembly: MobileBandSync, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 6AE79C20-CD20-4792-8F76-8817DEB4DE21
@@ -41,7 +41,7 @@ namespace MobileBandSync.Common
         Geopoint geopoint1 = (Geopoint) null;
         try
         {
-          map.GetLocationFromOffset(new Point(0.0, 0.0), ref geopoint1);
+          map.GetLocationFromOffset(new Point(0.0, 0.0), out geopoint1);
         }
         catch
         {
@@ -51,13 +51,14 @@ namespace MobileBandSync.Common
             Longitude = 0.0
           });
           Point point;
-          map.GetOffsetFromLocation(geopoint2, ref point);
-          map.GetLocationFromOffset(new Point(0.0, point.Y), ref geopoint1);
+          map.GetOffsetFromLocation(geopoint2, out point);
+          map.GetLocationFromOffset(new Point(0.0, point.Y), out geopoint1);
         }
         Geopoint geopoint3 = (Geopoint) null;
         try
         {
-          map.GetLocationFromOffset(new Point(((FrameworkElement) map).ActualWidth, ((FrameworkElement) map).ActualHeight), ref geopoint3);
+          map.GetLocationFromOffset(new Point(((FrameworkElement) map).ActualWidth, 
+              ((FrameworkElement) map).ActualHeight), out geopoint3);
         }
         catch
         {
@@ -67,8 +68,8 @@ namespace MobileBandSync.Common
             Longitude = 0.0
           });
           Point point;
-          map.GetOffsetFromLocation(geopoint4, ref point);
-          map.GetLocationFromOffset(new Point(0.0, point.Y), ref geopoint3);
+          map.GetOffsetFromLocation(geopoint4, out point);
+          map.GetLocationFromOffset(new Point(0.0, point.Y), out geopoint3);
         }
         if (geopoint1 != null && geopoint3 != null)
         {

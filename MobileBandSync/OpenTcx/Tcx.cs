@@ -6,6 +6,7 @@
 
 using MobileBandSync.OpenTcx.Entities;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -52,6 +53,7 @@ namespace MobileBandSync.OpenTcx
       }
       catch (Exception ex)
       {
+        Debug.WriteLine(ex.Message);
         return false;
       }
     }

@@ -31,10 +31,10 @@ namespace MobileBandSync.Common
       this.Page = page;
       Page page1 = this.Page;
       // ISSUE: method pointer
-      WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(((FrameworkElement) page1).add_Loaded), new Action<EventRegistrationToken>(((FrameworkElement) page1).remove_Loaded), new RoutedEventHandler((object) this, __methodptr(\u003C\u002Ector\u003Eb__6_0)));
+      //WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(((FrameworkElement) page1).add_Loaded), new Action<EventRegistrationToken>(((FrameworkElement) page1).remove_Loaded), new RoutedEventHandler((object) this, __methodptr(\u003C\u002Ector\u003Eb__6_0)));
       Page page2 = this.Page;
       // ISSUE: method pointer
-      WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(((FrameworkElement) page2).add_Unloaded), new Action<EventRegistrationToken>(((FrameworkElement) page2).remove_Unloaded), new RoutedEventHandler((object) this, __methodptr(\u003C\u002Ector\u003Eb__6_1)));
+      //WindowsRuntimeMarshal.AddEventHandler<RoutedEventHandler>(new Func<RoutedEventHandler, EventRegistrationToken>(((FrameworkElement) page2).add_Unloaded), new Action<EventRegistrationToken>(((FrameworkElement) page2).remove_Unloaded), new RoutedEventHandler((object) this, __methodptr(\u003C\u002Ector\u003Eb__6_1)));
     }
 
     public RelayCommand GoBackCommand
@@ -42,7 +42,13 @@ namespace MobileBandSync.Common
       get
       {
         if (this._goBackCommand == null)
-          this._goBackCommand = new RelayCommand((Action) (() => this.GoBack()), (Func<bool>) (() => this.CanGoBack()));
+          this._goBackCommand = new RelayCommand((Action) (() =>
+          {
+              this.GoBack();
+          }), (Func<bool>) (() =>
+          {
+              return this.CanGoBack();
+          }));
         return this._goBackCommand;
       }
       set => this._goBackCommand = value;
@@ -53,7 +59,14 @@ namespace MobileBandSync.Common
       get
       {
         if (this._goForwardCommand == null)
-          this._goForwardCommand = new RelayCommand((Action) (() => this.GoForward()), (Func<bool>) (() => this.CanGoForward()));
+          this._goForwardCommand = new RelayCommand((Action) (() =>
+          {
+              this.GoForward();
+          }), (Func<bool>) (() =>
+          {
+              return this.CanGoForward();
+          }));
+
         return this._goForwardCommand;
       }
     }
@@ -76,6 +89,7 @@ namespace MobileBandSync.Common
       this.Frame.GoForward();
     }
 
+    /*
     private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
     {
       if (!this.GoBackCommand.CanExecute((object) null))
@@ -83,6 +97,7 @@ namespace MobileBandSync.Common
       e.put_Handled(true);
       this.GoBackCommand.Execute((object) null);
     }
+    */
 
     public event LoadStateEventHandler LoadState;
 

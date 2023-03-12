@@ -44,25 +44,25 @@ namespace MobileBandSync
     private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
     public WorkoutData PageWorkoutData = new WorkoutData();
    
-    private DatePicker startDatePicker;
+    //private DatePicker startDatePicker;
    
-    private DatePicker endDatePicker;
+    //private DatePicker endDatePicker;
    
-    private MapControl MapPicker;
+    //private MapControl MapPicker;
    
-    private CheckBox chkMap;
+    //private CheckBox chkMap;
    
-    private CheckBox chkWalk;
+    //private CheckBox chkWalk;
     
-    private CheckBox chkSleep;
+    //private CheckBox chkSleep;
     
-    private CheckBox chkRun;
+    //private CheckBox chkRun;
     
-    private CheckBox chkBike;
+    //private CheckBox chkBike;
     
-    private Grid LayoutRoot;
+    //private Grid LayoutRoot;
     
-    private Hub Hub;
+    //private Hub Hub;
 
     public HubPage()
     {

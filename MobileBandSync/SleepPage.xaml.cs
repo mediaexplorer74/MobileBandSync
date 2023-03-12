@@ -30,7 +30,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace MobileBandSync
 {
-    public sealed partial class SleepPage : Page//, IComponentConnector
+    public sealed partial class SleepPage : Page
     {
         private readonly NavigationHelper navigationHelper;
         private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -138,43 +138,7 @@ namespace MobileBandSync
         private List<string> slCadence = new List<string>();
         private CultureInfo sleepPageCultureInfo = new CultureInfo("en-US");
 
-        /*
-        private Page pageRoot;
         
-        private Grid DiagramGrid;
-        
-        private TextBlock Summary;
-        
-        private TextBlock Date;
-        
-        private TextBlock LightHours;
-        
-        private TextBlock LightMinutes;
-        
-        private TextBlock RestfulHours;
-        
-        private TextBlock RestfulMinutes;
-        
-        private TextBlock Hours;
-        
-        private TextBlock Minutes;
-        
-        private TextBlock AsleepTime;
-        
-        private TextBlock AwakeTime;
-        
-        private Grid XAxis;
-        
-        private Grid BarPanel;
-        
-        private Canvas SleepDiagrams;
-        
-        private Grid LineHour;
-        
-        private Grid HourText;
-        
-        //private bool _contentLoaded;
-        */
 
         public SleepPage()
         {
@@ -212,8 +176,10 @@ namespace MobileBandSync
 
         private async void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
-            if (this.CurrentWorkout == null || this.CurrentWorkout.Items == null || this.CurrentWorkout.Items.Count <= 0)
+            if (this.CurrentWorkout == null || this.CurrentWorkout.Items == null 
+                || this.CurrentWorkout.Items.Count <= 0)
                 return;
+
             this.CurrentWorkout.Items.Clear();
         }
 
@@ -231,7 +197,9 @@ namespace MobileBandSync
                 this.CancelTokenSource = new CancellationTokenSource();
                 if (this.CurrentWorkout.Items != null && this.CurrentWorkout.Items.Count != 0)
                     return;
-                this.CurrentWorkout.TracksLoaded += new EventHandler<TracksLoadedEventArgs>(this.WorkoutTracks_Loaded);
+                this.CurrentWorkout.TracksLoaded += 
+                    new EventHandler<TracksLoadedEventArgs>(this.WorkoutTracks_Loaded);
+
                 await this.CurrentWorkout.ReadSleepData(this.CancelTokenSource.Token);
                 Size canvasSize = this.CanvasSize;
                 double width = canvasSize.Width;
@@ -245,9 +213,11 @@ namespace MobileBandSync
             }
         }
 
-        //protected virtual void OnNavigatedTo(NavigationEventArgs e) => this.navigationHelper.OnNavigatedTo(e);
+        //protected virtual void OnNavigatedTo(NavigationEventArgs e)
+        //  => this.navigationHelper.OnNavigatedTo(e);
 
-        //protected virtual void OnNavigatedFrom(NavigationEventArgs e) => this.navigationHelper.OnNavigatedFrom(e);
+        //protected virtual void OnNavigatedFrom(NavigationEventArgs e)
+        //  => this.navigationHelper.OnNavigatedFrom(e);
 
         private async void Left_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -309,12 +279,18 @@ namespace MobileBandSync
                 DateTime start1 = this.CurrentWorkout.Start;
                 DateTime start2 = this.CurrentWorkout.Start;
                 this.AddXAxis(this.CurrentWorkout.Start, this.CurrentWorkout.End);
-                this.Hours.put_Text(this.CurrentWorkout.SleepDuration.Hours.ToString());
-                this.Minutes.put_Text(this.CurrentWorkout.SleepDuration.Minutes.ToString("00"));
-                this.RestfulHours.put_Text(this.CurrentWorkout.TotalRestfulSleepDuration.Hours.ToString());
-                this.RestfulMinutes.put_Text(this.CurrentWorkout.TotalRestfulSleepDuration.Minutes.ToString("00"));
-                this.LightHours.put_Text(this.CurrentWorkout.TotalRestlessSleepDuration.Hours.ToString());
-                this.LightMinutes.put_Text(this.CurrentWorkout.TotalRestlessSleepDuration.Minutes.ToString("00"));
+                this.Hours.Text = (this.CurrentWorkout.SleepDuration.Hours.ToString());
+                this.Minutes.Text = (this.CurrentWorkout.SleepDuration.Minutes.ToString("00"));
+
+                this.RestfulHours.Text = 
+                    (this.CurrentWorkout.TotalRestfulSleepDuration.Hours.ToString());
+                this.RestfulMinutes.Text = 
+                    (this.CurrentWorkout.TotalRestfulSleepDuration.Minutes.ToString("00"));
+                this.LightHours.Text = 
+                    (this.CurrentWorkout.TotalRestlessSleepDuration.Hours.ToString());
+                this.LightMinutes.Text = 
+                    (this.CurrentWorkout.TotalRestlessSleepDuration.Minutes.ToString("00"));
+
                 foreach (TrackItem trackItem in (Collection<TrackItem>)this.CurrentWorkout.Items)
                 {
                     DateTime dateTime = this.CurrentWorkout.Start + new TimeSpan(0, 0, trackItem.SecFromStart);
@@ -334,7 +310,10 @@ namespace MobileBandSync
             if (item != null)
             {
                 DateTime dateTime = this.CurrentWorkout.Start + new TimeSpan(0, 0, item.SecFromStart);
-                if ((int)item.SleepType == (int)lastSleepType && (int)item.SegmentType == (int)lastSegmentType && item != this.CurrentWorkout.Items[this.CurrentWorkout.Items.Count - 1])
+
+                if ((int)item.SleepType == (int)lastSleepType && (int)item.SegmentType 
+                    == (int)lastSegmentType 
+                    && item != this.CurrentWorkout.Items[this.CurrentWorkout.Items.Count - 1])
                     return;
                 TimeSpan dtLength = new TimeSpan(0, (int)(dateTime - lastSegmentDate).TotalMinutes, 0);
                 this.slCadence.Add(Convert.ToString((long)item.Cadence, 2).PadLeft(32, '0'));
@@ -371,11 +350,19 @@ namespace MobileBandSync
             int num = 60 - dtStart.Minute;
             int minute = dtEnd.Minute;
             DateTime dateTime = dtStart.AddMinutes((double)num);
-            this.Date.put_Text(dtStart.ToLocalTime().ToString("ddd M/d", (IFormatProvider)this.sleepPageCultureInfo) + "   Avg HR: " + this.CurrentWorkout.AvgHR.ToString() + "   Max HR: " + this.CurrentWorkout.MaxHR.ToString() + "   Cal: " + this.CurrentWorkout.Calories.ToString());
-            string lower1 = dtStart.ToLocalTime().ToString("h:mmtt", (IFormatProvider)this.sleepPageCultureInfo).ToLower();
-            this.AsleepTime.put_Text("Asleep " + lower1.Substring(0, lower1.Length - 1));
-            string lower2 = dtEnd.ToLocalTime().ToString("h:mmtt", (IFormatProvider)this.sleepPageCultureInfo).ToLower();
-            this.AwakeTime.put_Text("Woke up " + lower2.Substring(0, lower2.Length - 1));
+
+            this.Date.Text = (dtStart.ToLocalTime().ToString("ddd M/d", 
+                (IFormatProvider)this.sleepPageCultureInfo) + "   Avg HR: "
+                + this.CurrentWorkout.AvgHR.ToString() + "   Max HR: " 
+                + this.CurrentWorkout.MaxHR.ToString() + "   Cal: " + 
+                this.CurrentWorkout.Calories.ToString());
+
+            string lower1 = dtStart.ToLocalTime().ToString("h:mmtt", 
+                (IFormatProvider)this.sleepPageCultureInfo).ToLower();
+            this.AsleepTime.Text = ("Asleep " + lower1.Substring(0, lower1.Length - 1));
+            string lower2 = dtEnd.ToLocalTime().ToString("h:mmtt", 
+                (IFormatProvider)this.sleepPageCultureInfo).ToLower();
+            this.AwakeTime.Text = ("Woke up " + lower2.Substring(0, lower2.Length - 1));
             ((ICollection<UIElement>)((Panel)this.HourText).Children).Clear();
             ((ICollection<ColumnDefinition>)this.LineHour.ColumnDefinitions).Clear();
             ((ICollection<ColumnDefinition>)this.HourText.ColumnDefinitions).Clear();
@@ -384,29 +371,31 @@ namespace MobileBandSync
             {
                 ColumnDefinitionCollection columnDefinitions1 = this.LineHour.ColumnDefinitions;
                 ColumnDefinition columnDefinition1 = new ColumnDefinition();
-                columnDefinition1.put_Width(new GridLength((double)num, GridUnitType.Star));
+                columnDefinition1.Width = (new GridLength((double)num, GridUnitType.Star));
                 ((ICollection<ColumnDefinition>)columnDefinitions1).Add(columnDefinition1);
                 ColumnDefinitionCollection columnDefinitions2 = this.HourText.ColumnDefinitions;
                 ColumnDefinition columnDefinition2 = new ColumnDefinition();
-                columnDefinition2.put_Width(new GridLength((double)num, GridUnitType.Star));
+                columnDefinition2.Width = (new GridLength((double)num, GridUnitType.Star));
                 ((ICollection<ColumnDefinition>)columnDefinitions2).Add(columnDefinition2);
                 if (num > 15)
                 {
                     string str;
                     if (dtStart.ToLocalTime().Hour == 23 || dtStart.ToLocalTime().Hour == 0)
                     {
-                        string lower3 = dtStart.ToLocalTime().ToString("htt", (IFormatProvider)this.sleepPageCultureInfo).ToLower();
+                        string lower3 = dtStart.ToLocalTime().ToString("htt", 
+                            (IFormatProvider)this.sleepPageCultureInfo).ToLower();
                         str = lower3.Substring(0, lower3.Length - 1);
                     }
                     else
-                        str = dtStart.ToLocalTime().ToString("hh", (IFormatProvider)this.sleepPageCultureInfo).TrimStart('0');
+                        str = dtStart.ToLocalTime().ToString("hh",
+                            (IFormatProvider)this.sleepPageCultureInfo).TrimStart('0');
                     TextBlock textBlock1 = new TextBlock();
-                    textBlock1.put_Text(str);
-                    ((FrameworkElement)textBlock1).put_VerticalAlignment((VerticalAlignment)2);
-                    ((FrameworkElement)textBlock1).put_HorizontalAlignment((HorizontalAlignment)2);
-                    textBlock1.put_FontSize(16.0);
-                    textBlock1.put_FontWeight(FontWeights.Normal);
-                    textBlock1.put_Foreground((Brush)new SolidColorBrush(new Color()
+                    textBlock1.Text = (str);
+                    ((FrameworkElement)textBlock1).VerticalAlignment = VerticalAlignment.Center;
+                    ((FrameworkElement)textBlock1).HorizontalAlignment = HorizontalAlignment.Center;
+                    textBlock1.FontSize = (16.0);
+                    textBlock1.FontWeight = (FontWeights.Normal);
+                    textBlock1.Foreground = ((Brush)new SolidColorBrush(new Color()
                     {
                         A = byte.MaxValue,
                         R = (byte)145,
@@ -431,7 +420,9 @@ namespace MobileBandSync
                 ((FrameworkElement)border1).HorizontalAlignment = ((HorizontalAlignment)3);
                 ((FrameworkElement)border1).VerticalAlignment = ((VerticalAlignment)3);
                 ((FrameworkElement)border1).Margin = (new Thickness(0.0, 0.0, 0.0, 23.0));
-                Grid.SetColumn((FrameworkElement)border1, ((ICollection<ColumnDefinition>)this.LineHour.ColumnDefinitions).Count - 1);
+
+                Grid.SetColumn((FrameworkElement)border1, 
+                    ((ICollection<ColumnDefinition>)this.LineHour.ColumnDefinitions).Count - 1);
                 Grid.SetRow((FrameworkElement)border1, 0);
                 ((ICollection<UIElement>)((Panel)this.LineHour).Children).Add((UIElement)border1);
             }
@@ -460,11 +451,14 @@ namespace MobileBandSync
                     }
                 }
                 localTime = dateTime.ToLocalTime();
-                string lower4 = localTime.ToString("htt", (IFormatProvider)this.sleepPageCultureInfo).ToLower();
+
+                string lower4 = localTime.ToString("htt",
+                    (IFormatProvider)this.sleepPageCultureInfo).ToLower();
                 str = lower4.Substring(0, lower4.Length - 1);
             label_11:
                 TextBlock textBlock3 = new TextBlock();
                 textBlock3.Text = (str);
+
                 ((FrameworkElement)textBlock3).VerticalAlignment = ((VerticalAlignment)2);
                 ((FrameworkElement)textBlock3).HorizontalAlignment = ((HorizontalAlignment)2);
                 textBlock3.FontSize = (16.0);
@@ -477,7 +471,9 @@ namespace MobileBandSync
                 textBlock3.Foreground = ((Brush)new SolidColorBrush(color));
                 ((FrameworkElement)textBlock3).Margin = (new Thickness(0.0, 0.0, -4.0, 0.0));
                 TextBlock textBlock4 = textBlock3;
-                Grid.SetColumn((FrameworkElement)textBlock4, ((ICollection<ColumnDefinition>)this.HourText.ColumnDefinitions).Count - 1);
+
+                Grid.SetColumn((FrameworkElement)textBlock4, 
+                    ((ICollection<ColumnDefinition>)this.HourText.ColumnDefinitions).Count - 1);
                 ((ICollection<UIElement>)((Panel)this.HourText).Children).Add((UIElement)textBlock4);
                 Border border3 = new Border();
                 border3.BorderThickness = (new Thickness(0.0, 0.0, 1.0, 0.0));
@@ -489,10 +485,13 @@ namespace MobileBandSync
                 color.B = (byte)234;
                 SolidColorBrush solidColorBrush = new SolidColorBrush(color);
                 border4.BorderBrush = ((Brush)solidColorBrush);
+
                 ((FrameworkElement)border3).HorizontalAlignment = ((HorizontalAlignment)3);
                 ((FrameworkElement)border3).VerticalAlignment = ((VerticalAlignment)3);
                 ((FrameworkElement)border3).Margin = (new Thickness(0.0, 0.0, 0.0, 23.0));
-                Grid.SetColumn((FrameworkElement)border3, ((ICollection<ColumnDefinition>)this.LineHour.ColumnDefinitions).Count - 1);
+
+                Grid.SetColumn((FrameworkElement)border3, 
+                    ((ICollection<ColumnDefinition>)this.LineHour.ColumnDefinitions).Count - 1);
                 Grid.SetRow((FrameworkElement)border3, 0);
                 ((ICollection<UIElement>)((Panel)this.LineHour).Children).Add((UIElement)border3);
                 dateTime = dateTime.AddHours(1.0);
@@ -502,11 +501,11 @@ namespace MobileBandSync
             {
                 ColumnDefinitionCollection columnDefinitions5 = this.LineHour.ColumnDefinitions;
                 ColumnDefinition columnDefinition5 = new ColumnDefinition();
-                columnDefinition5.put_Width(new GridLength((double)minute, GridUnitType.Star));
+                columnDefinition5.Width = (new GridLength((double)minute, GridUnitType.Star));
                 ((ICollection<ColumnDefinition>)columnDefinitions5).Add(columnDefinition5);
                 ColumnDefinitionCollection columnDefinitions6 = this.HourText.ColumnDefinitions;
                 ColumnDefinition columnDefinition6 = new ColumnDefinition();
-                columnDefinition6.put_Width(new GridLength((double)minute, GridUnitType.Star));
+                columnDefinition6.Width = (new GridLength((double)minute, GridUnitType.Star));
                 ((ICollection<ColumnDefinition>)columnDefinitions6).Add(columnDefinition6);
             }
             return flag;
@@ -516,31 +515,31 @@ namespace MobileBandSync
         {
             bool flag = true;
             Rectangle rectangle = new Rectangle();
-            ((FrameworkElement)rectangle).put_Margin(new Thickness(0.0, 0.0, 0.0, 0.0));
-            ((FrameworkElement)rectangle).put_VerticalAlignment((VerticalAlignment)3);
-            ((FrameworkElement)rectangle).put_HorizontalAlignment((HorizontalAlignment)3);
+            ((FrameworkElement)rectangle).Margin = (new Thickness(0.0, 0.0, 0.0, 0.0));
+            ((FrameworkElement)rectangle).VerticalAlignment = VerticalAlignment.Bottom;
+            ((FrameworkElement)rectangle).HorizontalAlignment = HorizontalAlignment.Right;
             switch (sleepType)
             {
                 case SleepPage.SleepType.Awake:
-                    ((Shape)rectangle).put_Fill((Brush)new SolidColorBrush(this.colAwakeBar));
-                    ((Shape)rectangle).put_Stroke((Brush)new SolidColorBrush(this.colAwakeBar));
+                    ((Shape)rectangle).Fill = ((Brush)new SolidColorBrush(this.colAwakeBar));
+                    ((Shape)rectangle).Stroke = ((Brush)new SolidColorBrush(this.colAwakeBar));
                     Grid.SetRow((FrameworkElement)rectangle, 0);
                     break;
                 case SleepPage.SleepType.LightSleep:
-                    ((Shape)rectangle).put_Fill((Brush)new SolidColorBrush(this.colLightBar));
-                    ((Shape)rectangle).put_Stroke((Brush)new SolidColorBrush(this.colLightBar));
+                    ((Shape)rectangle).Fill = ((Brush)new SolidColorBrush(this.colLightBar));
+                    ((Shape)rectangle).Stroke = ((Brush)new SolidColorBrush(this.colLightBar));
                     Grid.SetRow((FrameworkElement)rectangle, 1);
                     break;
                 case SleepPage.SleepType.RestfulSleep:
-                    ((Shape)rectangle).put_Fill((Brush)new SolidColorBrush(this.colRestfulBar));
-                    ((Shape)rectangle).put_Stroke((Brush)new SolidColorBrush(this.colRestfulBar));
+                    ((Shape)rectangle).Fill = ((Brush)new SolidColorBrush(this.colRestfulBar));
+                    ((Shape)rectangle).Stroke = ((Brush)new SolidColorBrush(this.colRestfulBar));
                     Grid.SetRow((FrameworkElement)rectangle, 1);
                     Grid.SetRowSpan((FrameworkElement)rectangle, 2);
                     break;
             }
             ColumnDefinitionCollection columnDefinitions = this.BarPanel.ColumnDefinitions;
             ColumnDefinition columnDefinition = new ColumnDefinition();
-            columnDefinition.Width(new GridLength(tsLength.TotalMinutes, GridUnitType.Star));
+            columnDefinition.Width = (new GridLength(tsLength.TotalMinutes, GridUnitType.Star));
             ((ICollection<ColumnDefinition>)columnDefinitions).Add(columnDefinition);
             Grid.SetColumn((FrameworkElement)rectangle,
                 ((ICollection<ColumnDefinition>)this.BarPanel.ColumnDefinitions).Count - 1);
@@ -551,17 +550,20 @@ namespace MobileBandSync
 
         private bool AddAwakeBar(TimeSpan dtLength)
         { 
-            this.AddBar(SleepPage.SleepType.Awake, dtLength); 
+            this.AddBar(SleepPage.SleepType.Awake, dtLength);
+            return true;
         }
 
         private bool AddLightBar(TimeSpan dtLength)
         { 
-            this.AddBar(SleepPage.SleepType.LightSleep, dtLength); 
+            this.AddBar(SleepPage.SleepType.LightSleep, dtLength);
+            return true;
         }
 
         private bool AddRestfulBar(TimeSpan dtLength)
         { 
-            this.AddBar(SleepPage.SleepType.RestfulSleep, dtLength); 
+            this.AddBar(SleepPage.SleepType.RestfulSleep, dtLength);
+            return true;
         }
 
         private async void WorkoutTracks_Loaded(object sender, TracksLoadedEventArgs e)

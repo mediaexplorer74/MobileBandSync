@@ -10,6 +10,7 @@ using MobileBandSync.MSFTBandLib.UWP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
@@ -167,7 +168,9 @@ namespace MobileBandSync.Common
         }
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
         }
+
         if (this.CurrentBand != null)
         {
           string str = this.ResourceLoader.GetString("Connected");
@@ -247,6 +250,7 @@ namespace MobileBandSync.Common
           }
           catch (Exception ex)
           {
+            Debug.WriteLine(ex.Message);
           }
         }
       }
@@ -274,6 +278,7 @@ namespace MobileBandSync.Common
         }
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
         }
       }
       if (listWorkouts.Count > 0)

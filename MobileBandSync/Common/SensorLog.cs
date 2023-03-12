@@ -9,6 +9,7 @@ using MobileBandSync.OpenTcx;
 using MobileBandSync.OpenTcx.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
@@ -388,7 +389,8 @@ namespace MobileBandSync.Common
             }
             catch (Exception ex)
             {
-              break;
+                Debug.WriteLine(ex.Message);
+                break;
             }
           }
           while (num1 >= 0);
@@ -607,7 +609,7 @@ namespace MobileBandSync.Common
               {
                 if (currenWorkout.Type == EventType.Sleeping)
                 {
-                  DateTime key;
+                  DateTime key = default;
                   ref DateTime local = ref key;
                   int year = stepSnapshot.TimeStamp.Year;
                   DateTime timeStamp = stepSnapshot.TimeStamp;

@@ -11,6 +11,7 @@ using MobileBandSync.OpenTcx.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
@@ -330,6 +331,7 @@ namespace MobileBandSync.Data
       }
       catch (Exception ex)
       {
+          Debug.WriteLine(ex.Message);
       }
     }
 
@@ -622,7 +624,8 @@ label_19:
               strArray[6] = "_";
               strArray[7] = str1;
               strArray[8] = "_";
-              strArray[9] = ((double) workoutItem2.DistanceMeters / 1000.0).ToString("F2", (IFormatProvider) WorkoutDataSource.AppCultureInfo);
+              strArray[9] = ((double) workoutItem2.DistanceMeters / 1000.0).ToString("F2", 
+                  (IFormatProvider) WorkoutDataSource.AppCultureInfo);
               strArray[10] = "_";
               strArray[11] = num6.ToString("F2", (IFormatProvider) WorkoutDataSource.AppCultureInfo);
               strArray[12] = "_";
@@ -637,7 +640,12 @@ label_19:
           }
         }
       }
-      WorkoutDataSource.DataSource.Summary = (WorkoutDataSource.DataSource.TotalDistance > 0UL ? ((double) WorkoutDataSource.DataSource.TotalDistance / 1000.0).ToString("0,0.00", (IFormatProvider) WorkoutDataSource.AppCultureInfo) : "0") + " km, Ø " + (WorkoutDataSource.DataSource.TotalHR / WorkoutDataSource.DataSource.NumHRWorkouts).ToString() + " bpm";
+      WorkoutDataSource.DataSource.Summary = (WorkoutDataSource.DataSource.TotalDistance > 0UL 
+                ? ((double) WorkoutDataSource.DataSource.TotalDistance / 1000.0).ToString("0,0.00",
+                (IFormatProvider) WorkoutDataSource.AppCultureInfo) 
+                : "0") + 
+                " km, Ø " + (WorkoutDataSource.DataSource.TotalHR / WorkoutDataSource.DataSource.NumHRWorkouts).ToString()
+                + " bpm";
       return workouts;
     }
 
@@ -651,7 +659,9 @@ label_19:
       }
       catch (Exception ex)
       {
+                Debug.WriteLine(ex.Message);
       }
+
       if (fileTcx != null)
       {
         try
@@ -815,6 +825,7 @@ label_19:
         }
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
         }
       }
       return workout;
@@ -972,6 +983,7 @@ label_19:
           }
           catch (Exception ex)
           {
+                  Debug.WriteLine(ex.Message);
           }
         }
       }));
@@ -1178,7 +1190,8 @@ label_19:
       }
       catch (Exception ex)
       {
-        tcxBuffer = "";
+            Debug.WriteLine(ex.Message);
+            tcxBuffer = "";
       }
 label_32:
       return tcxBuffer;
