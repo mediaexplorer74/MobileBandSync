@@ -1,0 +1,78 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns:local="using:MobileBandSync" 
+      xmlns:data="using:MobileBandSync.Data" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      x:Name="pageRoot" 
+      x:Class="MobileBandSync.ItemPage">
+    
+    <!--DataContext>
+        <Binding Path="DefaultViewModel.Item">
+            <RelativeSource>
+                <RelativeSource Mode="Self" />
+            </RelativeSource>
+        </Binding>
+    </DataContext-->
+    
+    <!--Background>
+        <ThemeResource ResourceKey="ApplicationPageBackgroundThemeBrush" />
+    </Background-->
+    
+    <!--Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <DefaultNavigationTransitionInfo>
+                    <ContinuumNavigationTransitionInfo />
+                </DefaultNavigationTransitionInfo>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Transitions-->
+    
+    <!--Content-->
+        <Grid x:Name="LayoutRoot">
+            <!--ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition />
+                </TransitionCollection>
+            </ChildrenTransitions>
+            <RowDefinitions>
+                <RowDefinitionCollection>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </RowDefinitionCollection>
+            </RowDefinitions-->
+            
+                    <StackPanel Margin="19,0,0,0">
+                        
+                                <TextBlock Height="68">
+                    <!--DataTemplate. x:Name="Title" /-->
+                  
+                  <!--Style>
+                    <ThemeResource ResourceKey="SubheaderTextBlockStyle" />
+                  </Style-->
+                  <!--CharacterSpacing>
+                    <ThemeResource ResourceKey="PivotHeaderItemCharacterSpacing" />
+                  </CharacterSpacing-->
+                                </TextBlock>
+                           
+                    </StackPanel>
+                    <Grid x:Name="ContentRoot" Row="1" />
+             
+        </Grid>
+    <!--/Content-->
+</Page>
+<!--Page
+    x:Class="MobileBandSync.ItemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MobileBandSync"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="LayoutRoot">
+        <Grid x:Name="ContentRoot">
+        </Grid>
+    </Grid>    
+</Page-->

@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{801124EB-0B7E-4DA0-B08D-24831A4B524C}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MobileBandSync</RootNamespace>
+    <AssemblyName>MobileBandSync</AssemblyName>
+    <DefaultLanguage>ru-RU</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Counter.cs" />
+    <Compile Include="Common\DailySummary.cs" />
+    <Compile Include="Common\DistanceAnnotationType.cs" />
+    <Compile Include="Common\EventType.cs" />
+    <Compile Include="Common\ExportType.cs" />
+    <Compile Include="Common\GpsPosition.cs" />
+    <Compile Include="Common\HeartRate.cs" />
+    <Compile Include="Common\LoadStateEventArgs.cs" />
+    <Compile Include="Common\LoadStateEventHandler.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\RestType.cs" />
+    <Compile Include="Common\SaveStateEventArgs.cs" />
+    <Compile Include="Common\SaveStateEventHandler.cs" />
+    <Compile Include="Common\Sensor.cs" />
+    <Compile Include="Common\SensorLog.cs" />
+    <Compile Include="Common\SensorLogSequence.cs" />
+    <Compile Include="Common\SensorLogType.cs" />
+    <Compile Include="Common\SensorValueCollection1.cs" />
+    <Compile Include="Common\SensorValueCollection2.cs" />
+    <Compile Include="Common\SensorValueCollection3.cs" />
+    <Compile Include="Common\SkinTemperature.cs" />
+    <Compile Include="Common\SleepSummary.cs" />
+    <Compile Include="Common\Steps.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Common\SuspensionManagerException.cs" />
+    <Compile Include="Common\SyncViewModel.cs" />
+    <Compile Include="Common\TrackPoint.cs" />
+    <Compile Include="Common\UnknownData.cs" />
+    <Compile Include="Common\Waypoint.cs" />
+    <Compile Include="Common\Workout.cs" />
+    <Compile Include="Common\WorkoutFilterData.cs" />
+    <Compile Include="Common\WorkoutMarker.cs" />
+    <Compile Include="Common\WorkoutMarker2.cs" />
+    <Compile Include="Common\WorkoutPoint.cs" />
+    <Compile Include="Common\WorkoutSummary.cs" />
+    <Compile Include="Data\DiagramData.cs" />
+    <Compile Include="Data\SleepItem.cs" />
+    <Compile Include="Data\TrackItem.cs" />
+    <Compile Include="Data\TracksLoadedEventArgs.cs" />
+    <Compile Include="Data\WorkoutData.cs" />
+    <Compile Include="Data\WorkoutDataSource.cs" />
+    <Compile Include="Data\WorkoutItem.cs" />
+    <Compile Include="SleepPage.xaml.cs">
+      <DependentUpon>SleepPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SectionPage.xaml.cs">
+      <DependentUpon>SectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPage.xaml.cs">
+      <DependentUpon>ItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MSFTBandLib\AsyncHelpers.cs" />
+    <Compile Include="MSFTBandLib\BandBitConverter.cs" />
+    <Compile Include="MSFTBandLib\BandClientInterface.cs" />
+    <Compile Include="MSFTBandLib\BandConnectionInterface.cs" />
+    <Compile Include="MSFTBandLib\BandConnection.cs" />
+    <Compile Include="MSFTBandLib\BandInterface.cs" />
+    <Compile Include="MSFTBandLib\BandMetadataRange.cs" />
+    <Compile Include="MSFTBandLib\BandSocketInterface.cs" />
+    <Compile Include="MSFTBandLib\BandStatus.cs" />
+    <Compile Include="MSFTBandLib\Band.cs" />
+    <Compile Include="MSFTBandLib\CancellationTokenExtension.cs" />
+    <Compile Include="MSFTBandLib\Command\CommandDataSize.cs" />
+    <Compile Include="MSFTBandLib\Command\CommandEnum.cs" />
+    <Compile Include="MSFTBandLib\Command\CommandHelper.cs" />
+    <Compile Include="MSFTBandLib\Command\CommandPacket.cs" />
+    <Compile Include="MSFTBandLib\Command\CommandResponse.cs" />
+    <Compile Include="MSFTBandLib\DeviceCommands.cs" />
+    <Compile Include="MSFTBandLib\Exceptions\BandConnected.cs" />
+    <Compile Include="MSFTBandLib\Exceptions\BandConnectedNot.cs" />
+    <Compile Include="MSFTBandLib\Exceptions\BandConnectionConnected.cs" />
+    <Compile Include="MSFTBandLib\Exceptions\BandConnectionConnectedNot.cs" />
+    <Compile Include="MSFTBandLib\Exceptions\BandSocketConnected.cs" />
+    <Compile Include="MSFTBandLib\Exceptions\BandSocketConnectedNot.cs" />
+    <Compile Include="MSFTBandLib\Facility\FacilityEnum.cs" />
+    <Compile Include="MSFTBandLib\Helpers\TimeHelper.cs" />
+    <Compile Include="MSFTBandLib\Includes\ByteStream.cs" />
+    <Compile Include="MSFTBandLib\Libs\Network.cs" />
+    <Compile Include="MSFTBandLib\Libs\Services.cs" />
+    <Compile Include="MSFTBandLib\Libs\Tiles.cs" />
+    <Compile Include="MSFTBandLib\Metrics\BandVersion.cs" />
+    <Compile Include="MSFTBandLib\Metrics\Sleep.cs" />
+    <Compile Include="MSFTBandLib\MSFTBandLib.cs" />
+    <Compile Include="MSFTBandLib\Notifications\NotificationsEnum.cs" />
+    <Compile Include="MSFTBandLib\ProgressEventArgs.cs" />
+    <Compile Include="MSFTBandLib\TX.cs" />
+    <Compile Include="MSFTBandLib\UWP\BandClientUWP.cs" />
+    <Compile Include="MSFTBandLib\UWP\BandSocketUWP.cs" />
+    <Compile Include="MSFTBandLib\UWP\MSFTBandLibUWP.cs" />
+    <Compile Include="OpenTcx\Entities\AbstractSource_t.cs" />
+    <Compile Include="OpenTcx\Entities\AbstractStep_t.cs" />
+    <Compile Include="OpenTcx\Entities\ActivityLap_t.cs" />
+    <Compile Include="OpenTcx\Entities\ActivityList_t.cs" />
+    <Compile Include="OpenTcx\Entities\ActivityReference_t.cs" />
+    <Compile Include="OpenTcx\Entities\Activity_t.cs" />
+    <Compile Include="OpenTcx\Entities\Application_t.cs" />
+    <Compile Include="OpenTcx\Entities\BuildType_t.cs" />
+    <Compile Include="OpenTcx\Entities\Build_t.cs" />
+    <Compile Include="OpenTcx\Entities\Cadence_t.cs" />
+    <Compile Include="OpenTcx\Entities\CaloriesBurned_t.cs" />
+    <Compile Include="OpenTcx\Entities\CourseFolder_t.cs" />
+    <Compile Include="OpenTcx\Entities\CourseLap_t.cs" />
+    <Compile Include="OpenTcx\Entities\CoursePointType_t.cs" />
+    <Compile Include="OpenTcx\Entities\CoursePoint_t.cs" />
+    <Compile Include="OpenTcx\Entities\Courses_t.cs" />
+    <Compile Include="OpenTcx\Entities\Course_t.cs" />
+    <Compile Include="OpenTcx\Entities\CustomHeartRateZone_t.cs" />
+    <Compile Include="OpenTcx\Entities\CustomSpeedZone_t.cs" />
+    <Compile Include="OpenTcx\Entities\Device_t.cs" />
+    <Compile Include="OpenTcx\Entities\Distance_t.cs" />
+    <Compile Include="OpenTcx\Entities\Duration_t.cs" />
+    <Compile Include="OpenTcx\Entities\FirstSport_t.cs" />
+    <Compile Include="OpenTcx\Entities\Folders_t.cs" />
+    <Compile Include="OpenTcx\Entities\HeartRateAbove_t.cs" />
+    <Compile Include="OpenTcx\Entities\HeartRateAsPercentOfMax_t.cs" />
+    <Compile Include="OpenTcx\Entities\HeartRateBelow_t.cs" />
+    <Compile Include="OpenTcx\Entities\HeartRateInBeatsPerMinute_t.cs" />
+    <Compile Include="OpenTcx\Entities\HeartRateValue_t.cs" />
+    <Compile Include="OpenTcx\Entities\HeartRate_t.cs" />
+    <Compile Include="OpenTcx\Entities\HistoryFolder_t.cs" />
+    <Compile Include="OpenTcx\Entities\History_t.cs" />
+    <Compile Include="OpenTcx\Entities\Intensity_t.cs" />
+    <Compile Include="OpenTcx\Entities\MultiSportFolder_t.cs" />
+    <Compile Include="OpenTcx\Entities\MultiSportSession_t.cs" />
+    <Compile Include="OpenTcx\Entities\NameKeyReference_t.cs" />
+    <Compile Include="OpenTcx\Entities\NextSport_t.cs" />
+    <Compile Include="OpenTcx\Entities\None_t.cs" />
+    <Compile Include="OpenTcx\Entities\Plan_t.cs" />
+    <Compile Include="OpenTcx\Entities\Position_t.cs" />
+    <Compile Include="OpenTcx\Entities\PredefinedHeartRateZone_t.cs" />
+    <Compile Include="OpenTcx\Entities\PredefinedSpeedZone_t.cs" />
+    <Compile Include="OpenTcx\Entities\QuickWorkout_t.cs" />
+    <Compile Include="OpenTcx\Entities\Repeat_t.cs" />
+    <Compile Include="OpenTcx\Entities\SensorState_t.cs" />
+    <Compile Include="OpenTcx\Entities\SpeedType_t.cs" />
+    <Compile Include="OpenTcx\Entities\Speed_t.cs" />
+    <Compile Include="OpenTcx\Entities\Sport_t.cs" />
+    <Compile Include="OpenTcx\Entities\Step_t.cs" />
+    <Compile Include="OpenTcx\Entities\Target_t.cs" />
+    <Compile Include="OpenTcx\Entities\Time_t.cs" />
+    <Compile Include="OpenTcx\Entities\Trackpoint_t.cs" />
+    <Compile Include="OpenTcx\Entities\TrainingCenterDatabase_t.cs" />
+    <Compile Include="OpenTcx\Entities\TrainingType_t.cs" />
+    <Compile Include="OpenTcx\Entities\Training_t.cs" />
+    <Compile Include="OpenTcx\Entities\TriggerMethod_t.cs" />
+    <Compile Include="OpenTcx\Entities\UserInitiated_t.cs" />
+    <Compile Include="OpenTcx\Entities\Version_t.cs" />
+    <Compile Include="OpenTcx\Entities\Week_t.cs" />
+    <Compile Include="OpenTcx\Entities\WorkoutFolder_t.cs" />
+    <Compile Include="OpenTcx\Entities\Workouts_t.cs" />
+    <Compile Include="OpenTcx\Entities\Workout_t.cs" />
+    <Compile Include="OpenTcx\Entities\Zone_t.cs" />
+    <Compile Include="OpenTcx\OpenTcxException.cs" />
+    <Compile Include="OpenTcx\Tcx.cs" />
+    <Compile Include="OpenTcx\Validator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\DetailPos.png" />
+    <Content Include="Assets\HubBackground.theme-dark.png" />
+    <Content Include="Assets\HubBackground.theme-light.png" />
+    <Content Include="Assets\LightGray.png" />
+    <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\MediumGray.png" />
+    <Content Include="Assets\SmallLogo.scale-240.png" />
+    <Content Include="Assets\SplashScreen.scale-240.png" />
+    <Content Include="Assets\Square71x71Logo.scale-240.png" />
+    <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\WideLogo.scale-240.png" />
+    <Content Include="Common\ReadMe.txt" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\biking.png" />
+    <Content Include="Resources\btn_left.png" />
+    <Content Include="Resources\btn_right.png" />
+    <Content Include="Resources\device-face-neon.png" />
+    <Content Include="Resources\filter.png" />
+    <Content Include="Resources\plus.png" />
+    <Content Include="Resources\running.png" />
+    <Content Include="Resources\share.png" />
+    <Content Include="Resources\sleep.png" />
+    <Content Include="Resources\walking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="SleepPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HubPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="WinRTXamlToolkit.Controls.DataVisualization.UWP">
+      <Version>2.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Graphics.Canvas">
+      <HintPath>lib\Microsoft.Graphics.Canvas.winmd</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

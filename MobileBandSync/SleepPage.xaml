@@ -1,0 +1,230 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+      xmlns:local="using:MobileBandSync" 
+      xmlns:data="using:MobileBandSync.Data" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps" 
+      xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting" 
+      xmlns:common="using:MobileBandSync.Common" 
+      x:Name="pageRoot" 
+      x:Class="MobileBandSync.SleepPage">
+    
+<!--d:DataContext>
+<Binding Path="DefaultViewModel.Workout">
+<RelativeSource>
+    <RelativeSource Mode="Self" />
+</RelativeSource>
+</Binding>
+</d:DataContext-->
+    
+  <Grid Background="White">
+        <Rectangle Fill="#FF005AA1" />
+        <StackPanel VerticalAlignment="Top">
+            <Grid>
+                <Image  
+                        HorizontalAlignment="Left" Margin="5,0,0,7" 
+                        VerticalAlignment="Center" 
+                        Source="Resources/btn_left.png" 
+                        Height="32" Width="32">
+
+                </Image>
+                <Image
+                        HorizontalAlignment="Right" Margin="0,0,5,7" 
+                        VerticalAlignment="Center" Source="Resources/btn_right.png" 
+                        Height="32" Width="32">
+ 
+                </Image>
+
+            </Grid>
+    
+        </StackPanel>
+      
+        <Grid  x:Name="DiagramGrid" Row="1" 
+              MinHeight="270" Margin="0,0,0,10">
+            
+                    <TextBlock x:Name="AsleepTime" TextWrapping="NoWrap" 
+                               VerticalAlignment="Center" Text="Asleep 22:25" 
+                               HorizontalAlignment="Left" FontSize="16" FontWeight="Normal" 
+                               Foreground="#FF919191" />
+            
+                    <TextBlock x:Name="AwakeTime" TextWrapping="NoWrap" 
+                               VerticalAlignment="Center" Text="Awake 6:12" 
+                               HorizontalAlignment="Right" FontSize="16" FontWeight="Normal" 
+                               Foreground="#FF919191" />
+            
+                    <TextBlock TextWrapping="NoWrap"  
+                               VerticalAlignment="Center" Text="Awake" 
+                               HorizontalAlignment="Left" FontSize="16" FontWeight="Normal" 
+                               Margin="20,0,0,0" Foreground="#FF919191" />
+            
+                    <TextBlock TextWrapping="NoWrap" 
+                               VerticalAlignment="Center" Text="Light" 
+                               HorizontalAlignment="Left" FontSize="16" FontWeight="Normal" 
+                               Margin="20,0,0,0" Foreground="#FF919191" />
+            
+                    <TextBlock TextWrapping="NoWrap"  
+                               VerticalAlignment="Center" Text="Restful" 
+                               HorizontalAlignment="Left" FontSize="16" FontWeight="Normal" 
+                               Margin="20,0,0,0" Foreground="#FF919191" />
+            
+                    <Grid x:Name="XAxis">
+                                                
+                                <Grid x:Name="LineHour" Row="0" RowSpan="2" Background="Transparent" />
+                                <Grid x:Name="HourText" Row="1" Background="Transparent" />
+                            
+                    </Grid>
+            
+                    <Grid x:Name="BarPanel" Column="1" Row="1" RowSpan="3" Background="Transparent">
+                       
+                    </Grid>
+                    <Canvas x:Name="SleepDiagrams" VerticalAlignment="Stretch" 
+                            HorizontalAlignment="Stretch"
+                            Background="Transparent" />
+            
+        </Grid>
+        <StackPanel Margin="20,56,0,60" Orientation="Horizontal" Width="200">
+           
+                    <TextBlock x:Name="Hours" 
+                               TextWrapping="NoWrap" 
+                               Text="-" 
+                               VerticalAlignment="Bottom"
+                               FontSize="50" 
+                               FontWeight="ExtraLight" 
+                               Width="100"
+                               Foreground="#FFF2FFFF" />
+            
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="2,0,5,9" 
+                               TextWrapping="NoWrap" Text="h" 
+                               VerticalAlignment="Bottom" 
+                               FontSize="16" 
+                               FontWeight="ExtraLight" 
+                               Foreground="#FFF2FFFF" />
+            
+                    <TextBlock x:Name="Minutes" 
+                               TextWrapping="NoWrap" 
+                               Text="--" 
+                               VerticalAlignment="Bottom" 
+                               FontSize="50" 
+                               FontWeight="ExtraLight" 
+                               Width="100"
+                               Foreground="#FFF2FFFF" />
+            
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="2,0,0,9" 
+                               TextWrapping="NoWrap" 
+                               Text="m" 
+                               VerticalAlignment="Bottom"
+                               FontSize="16"
+                               FontWeight="ExtraLight"
+                               Foreground="#FFF2FFFF" />
+               
+        </StackPanel>
+    
+        <TextBlock x:Name="Summary"  HorizontalAlignment="Left" 
+                   Margin="20,0,0,20" TextWrapping="NoWrap" Text="Summary" 
+                   VerticalAlignment="Bottom" FontSize="25" FontWeight="ExtraLight" 
+                   Foreground="#FFF2FFFF" />
+    
+        <TextBlock x:Name="Date"  HorizontalAlignment="Left" Margin="20,0,0,120"
+                   TextWrapping="NoWrap" Text="Mon 11/13, Actual sleep" 
+                   VerticalAlignment="Bottom" FontSize="18" 
+                   FontWeight="Normal" 
+                   Foreground="#FF90CEFF" />
+    
+        <Ellipse Width="35" Height="35"  Margin="0,0,20,20" HorizontalAlignment="Right" 
+                 VerticalAlignment="Bottom" Stroke="#FFF2FFFF" Fill="#FFF2FFFF" />
+    
+        <Ellipse Width="39" Height="39" Margin="0,0,33,25" HorizontalAlignment="Right" 
+                 VerticalAlignment="Bottom" Stroke="#FF005AA1" Fill="#FF005AA1" />
+    
+        <TextBlock HorizontalAlignment="Left" Margin="20,0,0,100" TextWrapping="NoWrap" 
+                   Text="Activity details" VerticalAlignment="Bottom" FontSize="25" 
+                   FontWeight="Normal" Foreground="#FF373737" />
+    
+        <Grid  HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Bottom">
+           
+                    <TextBlock TextWrapping="NoWrap" Text="Restful sleep" 
+                               VerticalAlignment="Top" FontSize="18" FontWeight="Normal" 
+                               Foreground="#FF919191" />
+                    
+                    <StackPanel Margin="0,15,0,10" Orientation="Horizontal" 
+                                Width="100" VerticalAlignment="Bottom">
+           
+                        <TextBlock x:Name="RestfulHours" TextWrapping="NoWrap" 
+                                Text="-" VerticalAlignment="Bottom" 
+                                FontSize="50" FontWeight="ExtraLight" Width="100" 
+                                Foreground="#FF2368A9" />
+                        
+                        <TextBlock HorizontalAlignment="Left" 
+                                    Margin="2,0,5,9" TextWrapping="NoWrap" 
+                                    Text="h" VerticalAlignment="Bottom" 
+                                    FontSize="16" FontWeight="ExtraLight" 
+                                    Foreground="#FF2368A9" />
+
+                <TextBlock x:Name="RestfulMinutes" TextWrapping="NoWrap" 
+                                    Text="--" VerticalAlignment="Bottom" 
+                                    FontSize="50" FontWeight="ExtraLight"
+                                    Width="100" Foreground="#FF2368A9" />
+
+                <TextBlock HorizontalAlignment="Left" 
+                                        Margin="2,0,0,9" TextWrapping="NoWrap" 
+                                        Text="m" VerticalAlignment="Bottom" 
+                                        FontSize="16" FontWeight="ExtraLight" 
+                                        Foreground="#FF2368A9" />
+
+            </StackPanel>
+               
+        </Grid>
+                        
+        <Grid Row="2" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Bottom">
+           
+                    <TextBlock TextWrapping="NoWrap" Text="Light sleep" 
+                               VerticalAlignment="Top" FontSize="18" FontWeight="Normal" 
+                               Foreground="#FF919191" />
+                    <StackPanel Margin="0,15,0,10" Orientation="Horizontal" 
+                                Width="100" VerticalAlignment="Bottom" 
+                                HorizontalAlignment="Right">
+                     
+                        <TextBlock x:Name="LightHours" TextWrapping="NoWrap" 
+                                    Text="-" VerticalAlignment="Bottom" FontSize="50" 
+                                    FontWeight="ExtraLight" Width="100" Foreground="#FF2368A9" />
+                        
+                        <TextBlock HorizontalAlignment="Left" Margin="2,0,5,9" 
+                                    TextWrapping="NoWrap" Text="h" VerticalAlignment="Bottom" 
+                                    FontSize="16" FontWeight="ExtraLight" Foreground="#FF2368A9" />
+                        
+                        <TextBlock x:Name="LightMinutes" TextWrapping="NoWrap" 
+                                    Text="--" VerticalAlignment="Bottom" FontSize="50" 
+                                    FontWeight="ExtraLight" Width="100" 
+                                    Foreground="#FF2368A9" />
+                        
+                        <TextBlock HorizontalAlignment="Left" Margin="2,0,0,9" 
+                                    TextWrapping="NoWrap" Text="m" 
+                                    VerticalAlignment="Bottom" FontSize="16" 
+                                    FontWeight="ExtraLight" 
+                                    Foreground="#FF2368A9" />
+                          
+                    </StackPanel>
+              
+        </Grid>
+   
+  </Grid>
+
+</Page>
+    
+<!--Page
+x:Class="MobileBandSync.SleepPage"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:local="using:MobileBandSync"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+mc:Ignorable="d"
+Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+<Grid>
+
+</Grid>
+</Page-->
