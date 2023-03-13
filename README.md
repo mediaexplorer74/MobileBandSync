@@ -1,4 +1,5 @@
 # MobileBandSync_decomp
+![image](/Images/ms_heart.png)
 
 Old MicrosoftBand app (WP8.1) re-generated
 
@@ -6,13 +7,15 @@ Old MicrosoftBand app (WP8.1) re-generated
 
 ![image](/Images/shot1.png)
 
+![image](/Images/shot2.png)
+
 ## Tech. moment
 
 - Target Platform Min Version: 10.0.14393.0
 
 ## Progress
 
-MobileBandSync +-
+MobileBandSync.exe +-
 
 Microsoft.Graphics.Canvas - 
 

@@ -354,16 +354,16 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Resources\biking.png" />
-    <Content Include="Resources\btn_left.png" />
-    <Content Include="Resources\btn_right.png" />
-    <Content Include="Resources\device-face-neon.png" />
-    <Content Include="Resources\filter.png" />
-    <Content Include="Resources\plus.png" />
-    <Content Include="Resources\running.png" />
-    <Content Include="Resources\share.png" />
-    <Content Include="Resources\sleep.png" />
-    <Content Include="Resources\walking.png" />
+    <EmbeddedResource Include="Resources\biking.png" />
+    <EmbeddedResource Include="Resources\btn_left.png" />
+    <EmbeddedResource Include="Resources\btn_right.png" />
+    <EmbeddedResource Include="Resources\device-face-neon.png" />
+    <EmbeddedResource Include="Resources\filter.png" />
+    <EmbeddedResource Include="Resources\plus.png" />
+    <EmbeddedResource Include="Resources\running.png" />
+    <EmbeddedResource Include="Resources\share.png" />
+    <EmbeddedResource Include="Resources\sleep.png" />
+    <EmbeddedResource Include="Resources\walking.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

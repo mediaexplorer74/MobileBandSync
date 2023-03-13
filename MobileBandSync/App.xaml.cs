@@ -49,7 +49,7 @@ namespace MobileBandSync
             {
                 if (rootFrame.Content == null)
                 {
-                    rootFrame.Navigate(typeof(HubPage/*MainPage*/), e.Arguments);
+                    rootFrame.Navigate(typeof(SleepPage/*HubPage*/), e.Arguments);
                 }
               
                 Window.Current.Activate();

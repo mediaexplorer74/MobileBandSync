@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿// SensorLog.cs
 // Type: MobileBandSync.Common.SensorLog
 // Assembly: MobileBandSync, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: 6AE79C20-CD20-4792-8F76-8817DEB4DE21
@@ -20,7 +20,9 @@ namespace MobileBandSync.Common
   public class SensorLog
   {
     private Stream DataStream;
-    public Dictionary<uint, Dictionary<uint, uint>> IdOccurencies = new Dictionary<uint, Dictionary<uint, uint>>();
+
+    public Dictionary<uint, Dictionary<uint, uint>> IdOccurencies 
+            = new Dictionary<uint, Dictionary<uint, uint>>();
 
     public SensorLog() => this.Sequences = new List<SensorLogSequence>();
 
@@ -379,7 +381,8 @@ namespace MobileBandSync.Common
                   }
                   break;
                 default:
-                  if (num1 != 134 && num1 != 213 && num1 != 17 && num1 != 20 && num1 != 2 && num1 != 3 && num1 != 4)
+                  if (num1 != 134 && num1 != 213 && num1 != 17 && num1 != 20 && num1 != 2 && num1 != 3 
+                            && num1 != 4)
                   {
                     if (num1 != 14)
                       break;
@@ -407,7 +410,9 @@ namespace MobileBandSync.Common
             SensorLogSequence sensorLogSequence = sequence;
             DateTime dateTime10 = LastTimeStamp;
             timeStamp = sequence.TimeStamp;
-            TimeSpan? nullable = timeStamp.HasValue ? new TimeSpan?(dateTime10 - timeStamp.GetValueOrDefault()) : new TimeSpan?();
+            TimeSpan? nullable = timeStamp.HasValue 
+                            ? new TimeSpan?(dateTime10 - timeStamp.GetValueOrDefault()) 
+                            : new TimeSpan?();
             sensorLogSequence.Duration = nullable;
           }
         }
@@ -415,7 +420,8 @@ namespace MobileBandSync.Common
       return true;
     }
 
-    public async Task<List<Workout>> CreateWorkouts(ExportType type = ExportType.TCX | ExportType.HeartRate | ExportType.Cadence)
+    public async Task<List<Workout>> CreateWorkouts(ExportType type = ExportType.TCX
+        | ExportType.HeartRate | ExportType.Cadence)
     {
       List<Workout> Workouts = new List<Workout>();
       await Task.Run((Action) (() =>
@@ -438,12 +444,16 @@ namespace MobileBandSync.Common
         {
           if (sequence.WorkoutSummaries.Count > 0 && Workouts.Count > 0)
           {
-            (currenWorkout == null ? Workouts[Workouts.Count - 1] : currenWorkout).Summary = sequence.WorkoutSummaries[sequence.WorkoutSummaries.Count - 1];
+            (currenWorkout == null ? Workouts[Workouts.Count - 1] : currenWorkout).Summary 
+                  = sequence.WorkoutSummaries[sequence.WorkoutSummaries.Count - 1];
             num4 = num1;
             num5 = num2;
           }
+
           if (sequence.SleepSummaries.Count > 0 && Workouts.Count > 0)
-            (currenWorkout == null ? Workouts[Workouts.Count - 1] : currenWorkout).SleepSummary = sequence.SleepSummaries[sequence.SleepSummaries.Count - 1];
+            (currenWorkout == null ? Workouts[Workouts.Count - 1] : currenWorkout).SleepSummary 
+                  = sequence.SleepSummaries[sequence.SleepSummaries.Count - 1];
+
           if (sequence.WorkoutMarkers.Count > 0)
           {
             foreach (WorkoutMarker workoutMarker in sequence.WorkoutMarkers)
@@ -453,9 +463,12 @@ namespace MobileBandSync.Common
                 if (currenWorkout != null)
                 {
                   currenWorkout.EndTime = dateTime1;
-                  this.AddWorkoutData(ref currenWorkout, heartRateList1, elevationList, positionList, galvanicList, temperatureList, stepsList);
+                  this.AddWorkoutData(ref currenWorkout, heartRateList1, elevationList, 
+                      positionList, galvanicList, temperatureList, stepsList);
+
                   if (!Workouts.Contains(currenWorkout))
                     Workouts.Add(currenWorkout);
+
                   currenWorkout = (Workout) null;
                   heartRateList1.Clear();
                   elevationList.Clear();
