@@ -1,7 +1,7 @@
-# MobileBandSync_decomp
+# MobileBandSync
 ![image](/Images/ms_heart.png)
 
-Old MicrosoftBand app (WP8.1) re-generated
+Old MicrosoftBand app (WP8.1) "re-generation" (porting to UWP, W10/M)
 
 ## Screenshots
 
