@@ -8,13 +8,14 @@ xmlns:data="using:MobileBandSync.Data"
 xmlns:common="using:MobileBandSync.Common" 
 x:Class="MobileBandSync.HubPage"
 DataContext="{x:Bind DefaultViewModel}"
-Background="{ThemeResource HubBackgroundImageBrush}">
+Background="{ThemeResource AppBarBackgroundThemeBrush}"
+mc:Ignorable="d">
 
     
-<!--Resources>
-<ResourceDictionary-->
-<!--Flyout x:ConnectionId="1" x:Key="MyFlyout">
-<FlyoutPresenterStyle>
+<Page.Resources>
+<ResourceDictionary>
+<Flyout x:Name="Id1" x:Key="MyFlyout">
+<!--FlyoutPresenterStyle>
 <Style TargetType="FlyoutPresenter">
 <Setters>
 <SetterBaseCollection>
@@ -23,16 +24,18 @@ Background="{ThemeResource HubBackgroundImageBrush}">
 </SetterBaseCollection>
 </Setters>
 </Style>
-</FlyoutPresenterStyle>
-<Content-->
+</FlyoutPresenterStyle-->
 
     <!--Background="Transparent"-->
-<Grid x:Name="LayoutRoot">
+<Grid>
 
   <TextBlock x:Uid="FilterTitle" Width="100" />
+    
   <DatePicker x:Name="startDatePicker" Width="100" Header="Start" Margin="10,0,10,0" />
+  
   <DatePicker x:Name="endDatePicker" Header="End" Margin="10,0,10,0" />
-  <StackPanel  
+  
+   <StackPanel  
    Margin="10,0,0,0" Orientation="Horizontal">
     <CheckBox x:Uid="FilterRun" x:Name="chkRun" IsEnabled="False" />
     <CheckBox x:Uid="FilterBike" x:Name="chkBike" IsEnabled="False" />
@@ -43,17 +46,22 @@ Background="{ThemeResource HubBackgroundImageBrush}">
     <CheckBox x:Uid="FilterWalk" x:Name="chkWalk" IsEnabled="False" />
     <CheckBox x:Uid="FilterSleep" x:Name="chkSleep" IsEnabled="False" />
   </StackPanel>
-  <Maps:MapControl x:Name="MapPicker" 
-    MapServiceToken="k2EzVqZd3NVqANvoATSQ~hXvhMOdkUCJ2O_3UtkEhhA~Al7CFZt1oPVKz4tkCZLbQ7VMwfoed7u-BxCoMvevrmaM44uOgk9FRnRj0Rt2zZGe" 
-                  PedestrianFeaturesVisible="False" 
-                   TrafficFlowVisible="True" 
-                   LandmarksVisible="False" />
-    
-   <CheckBox x:Uid="FilterMap" x:Name="chkMap" Margin="10,0,0,0" 
-   IsEnabled="False" HorizontalAlignment="Left" />
-   
-   <StackPanel Margin="10,0,0,0" 
-   Orientation="Horizontal">
+
+        <!-- 
+        <Maps:MapControl x:Name="MapPicker"    
+        PedestrianFeaturesVisible="False" 
+        TrafficFlowVisible="True" 
+        LandmarksVisible="False" 
+        MapServiceToken="k2EzVqZd3NVqANvoATSQ~hXvhMOdkUCJ2O_3UtkEhhA~Al7CFZt1oPVKz4tkCZLbQ7VMwfoed7u-BxCoMvevrmaM44uOgk9FRnRj0Rt2zZGe"
+        />
+        -->
+
+        <CheckBox x:Uid="FilterMap" x:Name="chkMap" Margin="10,0,0,0" 
+           IsEnabled="False" HorizontalAlignment="Left" />
+
+                    <StackPanel 
+                        Margin="10,0,0,0" 
+                        Orientation="Horizontal">
 
        <Button x:Uid="BtnOK"
         Content="OK" IsEnabled="False" />
@@ -73,24 +81,7 @@ Background="{ThemeResource HubBackgroundImageBrush}">
 </Template>
 </DataTemplate>
 <DataTemplate x:Key="HubSectionHeaderShareTemplate">
-<Template>
-<Grid>
-<RowDefinitions>
-<RowDefinitionCollection>
-<RowDefinition Height="32px" />
-</RowDefinitionCollection>
-</RowDefinitions>
-<ColumnDefinitions>
-<ColumnDefinitionCollection>
-<ColumnDefinition Width="Auto" />
-<ColumnDefinition Width="10px" />
-<ColumnDefinition Width="32px" />
-<ColumnDefinition Width="32px" />
-<ColumnDefinition Width="32px" />
-</ColumnDefinitionCollection>
-</ColumnDefinitions>
-<Children>
-<UIElementCollection-->
+-->
         <TextBlock Text="{x:Bind }"/>
 
         <Button  IsEnabled="False" 
@@ -102,6 +93,7 @@ VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0"
 <Image Source="Resources/plus.png" Width="28" Height="28" />
 </Content-->
 </Button>
+    
 <ToggleButton x:Name="ToggleFilter1" 
     Margin="0,-14,0,0" IsEnabled="False" Height="28" HorizontalAlignment="Center" 
               VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0"
@@ -110,6 +102,7 @@ VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0"
 <Image Source="Resources/filter.png" Width="23" Height="23" />
 </Content-->
 </ToggleButton>
+    
 <Button IsEnabled="False" 
 Margin="0,-14,0,0" HorizontalAlignment="Center" 
 VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0" Background="Transparent">
@@ -123,164 +116,140 @@ VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0" Background="
     
 <!--DataTemplate x:Key="Standard200x180TileItemTemplate">
 <Template>
-<Grid Margin="0,0,9,5,9,5">
-<Background>
-<ThemeResource ResourceKey="ListViewItemPlaceholderBackgroundThemeBrush" />
-</Background>
-<Children>
-<UIElementCollection>
-<Image Stretch="None" Height="138,5" Width="138,5">
-<Source>
-<Binding Path="ImagePath" />
-</Source>
-<Name>
-<Binding Path="Title" />
-</Name>
-</Image>
-<TextBlock VerticalAlignment="Bottom" Margin="9,5,0,0,6,5">
-<Text>
-<Binding Path="Title" />
-</Text>
-<Style>
-<ThemeResource ResourceKey="BaseTextBlockStyle" />
-</Style>
-</TextBlock>
-</UIElementCollection>
-</Children>
-</Grid>
-</Template>
-</DataTemplate>
-<DataTemplate x:Key="StandardTripleLineItemTemplate">
-<Template>
-<Grid>
-<ColumnDefinitions>
-<ColumnDefinitionCollection>
-<ColumnDefinition Width="Auto" />
-<ColumnDefinition Width="*" />
-</ColumnDefinitionCollection>
-</ColumnDefinitions>
-<Children>
-<UIElementCollection>
-<Border Margin="0,9,5,0,0" Column="0" HorizontalAlignment="Left">
-<Background>
-<ThemeResource ResourceKey="ListViewItemPlaceholderBackgroundThemeBrush" />
-</Background>
-<Child>
-<Image Stretch="None" Height="79" Width="79">
-<Source>
+    <Grid Margin="0,0,9,5,9,5">
+    <Background>
+    <ThemeResource ResourceKey="ListViewItemPlaceholderBackgroundThemeBrush" />
+    </Background>
+    <Children>
+    <UIElementCollection>
+    <Image Stretch="None" Height="138,5" Width="138,5">
+    <Source>
     <Binding Path="ImagePath" />
-</Source>
-<Name>
+    </Source>
+    <Name>
     <Binding Path="Title" />
-</Name>
-</Image>
-</Child>
-</Border>
-<StackPanel Column="1" Margin="14,5,0,0,0">
-<Children>
-<UIElementCollection>
-<TextBlock>
-<Text>
-<Binding Path="Title" />
-</Text>
-<Style>
-<ThemeResource ResourceKey="ListViewItemTextBlockStyle" />
-</Style>
-</TextBlock>
-<TextBlock>
-<Text>
-<Binding Path="Description" />
-</Text>
-<Style>
-<ThemeResource ResourceKey="ListViewItemContentTextBlockStyle" />
-</Style>
-<Foreground>
-<ThemeResource ResourceKey="PhoneMidBrush" />
-</Foreground>
-</TextBlock>
-<TextBlock>
-<Text>
-<Binding Path="Subtitle" />
-</Text>
-<Style>
-<ThemeResource ResourceKey="ListViewItemSubheaderTextBlockStyle" />
-</Style>
-</TextBlock>
-</UIElementCollection>
-</Children>
-</StackPanel>
-</UIElementCollection>
-</Children>
-</Grid>
-</Template>
-</DataTemplate>
-<DataTemplate x:Key="StandardDoubleLineItemTemplate">
-<Template>
-<Grid>
-<ColumnDefinitions>
-<ColumnDefinitionCollection>
-<ColumnDefinition Width="Auto" />
-<ColumnDefinition Width="*" />
-</ColumnDefinitionCollection>
-</ColumnDefinitions>
-<Children>
-<UIElementCollection>
-<Border Margin="0,9,5,0,0" Column="0" HorizontalAlignment="Left">
-<Background>
-<ThemeResource ResourceKey="ListViewItemPlaceholderBackgroundThemeBrush" />
-</Background>
-<Child>
-<Image Stretch="None" Height="79" Width="79">
-<Source>
-    <Binding Path="ImagePath" />
-</Source>
-<Name>
+    </Name>
+    </Image>
+    <TextBlock VerticalAlignment="Bottom" Margin="9,5,0,0,6,5">
+    <Text>
     <Binding Path="Title" />
-</Name>
-</Image>
-</Child>
-</Border>
-<StackPanel Column="1" Margin="14,5,0,0,0">
-<Children>
-<UIElementCollection>
-<TextBlock>
-<Text>
-<Binding Path="Title" />
-</Text>
-<Style>
+    </Text>
+    <Style>
+    <ThemeResource ResourceKey="BaseTextBlockStyle" />
+    </Style>
+    </TextBlock>
+    </UIElementCollection>
+    </Children>
+    </Grid>
+    </Template>
+    </DataTemplate>
+    <DataTemplate x:Key="StandardTripleLineItemTemplate">
+    <Template>
+    <Grid>
+    <ColumnDefinitions>
+    <ColumnDefinitionCollection>
+    <ColumnDefinition Width="Auto" />
+    <ColumnDefinition Width="*" />
+    </ColumnDefinitionCollection>
+    </ColumnDefinitions>
+    <Children>
+    <UIElementCollection>
+    <Border Margin="0,9,5,0,0" Column="0" HorizontalAlignment="Left">
+    <Background>
+    <ThemeResource ResourceKey="ListViewItemPlaceholderBackgroundThemeBrush" />
+    </Background>
+    <Child>
+    <Image Stretch="None" Height="79" Width="79">
+    <Source>
+        <Binding Path="ImagePath" />
+    </Source>
+    <Name>
+        <Binding Path="Title" />
+    </Name>
+    </Image>
+    </Child>
+    </Border-->
+           <StackPanel>
+                        <TextBlock Text=" x:Bind Title " />
+
+                        <!--Style>
 <ThemeResource ResourceKey="ListViewItemTextBlockStyle" />
-</Style>
-</TextBlock>
-<TextBlock>
-<Text>
-<Binding Path="Subtitle" />
-</Text>
-<Style>
-<ThemeResource ResourceKey="ListViewItemSubheaderTextBlockStyle" />
-</Style>
-</TextBlock>
-</UIElementCollection>
-</Children>
-</StackPanel>
-</UIElementCollection>
-</Children>
-</Grid>
-</Template>
+</Style-->
+
+                        <!-- Style="{StaticResource=ListViewItemContentTextBlockStyle}"
+    Foreground="{ThemeResource ResourceKey="PhoneMidBrush"}"-->
+                            <TextBlock Text=" x:Bind Description " 
+                                   
+                                   >
+                        </TextBlock>
+
+                        <!--Style="{StaticResource=ListViewItemContentTextBlockStyle}"-->
+                            <TextBlock Text="Subtitle">
+
+                        </TextBlock>
+            </StackPanel>
+       </Grid>
+<!--/Template>
 </DataTemplate-->
-<!--/ResourceDictionary>
-</Resources-->
+
+ <!--DataTemplate x:Key="StandardDoubleLineItemTemplate">
+<Template>
+<Grid>
+<Border Margin="0,9,5,0,0" Column="0" HorizontalAlignment="Left">
+<Background>
+<ThemeResource ResourceKey="ListViewItemPlaceholderBackgroundThemeBrush" />
+</Background>
+
+<Image Stretch="None" Height="79" Width="79">
+<Source>
+    <Binding Path="ImagePath" />
+</Source>
+<Name>
+    <Binding Path="Title" />
+</Name>
+</Image>
+
+</Border>
+<StackPanel>
+<TextBlock>
+<Text>
+<Binding Path="Title" />
+</Text>
+<Style>
+<ThemeResource ResourceKey="ListViewItemTextBlockStyle" />
+</Style>
+</TextBlock>
+<TextBlock>
+<Text>
+<Binding Path="Subtitle" />
+</Text>
+<Style>
+<ThemeResource ResourceKey="ListViewItemSubheaderTextBlockStyle" />
+</Style>
+</TextBlock>
+</StackPanel>
+</Grid-->
+
+</Flyout>
+</ResourceDictionary>
+</Page.Resources>
     
 <!--Content-->
-<!--Grid x:Name="LayoutRoot"-->
+<Grid x:Name="LayoutRoot">
   <Hub x:Uid="Hub" x:Name="Hub" Header="application name" Foreground="Silver">
-    <!--Background>
+
+    <Hub.Background>
+        <ImageBrush Opacity="0.3" ImageSource="/Assets/HubBackground.theme-dark.jpg" 
+                    AlignmentX="Left" AlignmentY="Top"/>
+    </Hub.Background>
+            <!--Background>
     <ThemeResource ResourceKey="HubBackgroundImageBrush" />
     </Background-->
     <!--Sections-->
     <!--HubSectionCollection-->
 
     <!--HubSection Header="{x:Bind WorkoutTitle}" DataContext="{x:Bind WorkoutData}"-->
-    <HubSection>
+     <HubSection Header="View 1">
 
                 <!--HeaderTemplate>
     <ThemeResource ResourceKey="HubSectionHeaderShareTemplate" />
@@ -337,17 +306,18 @@ VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0" Background="
     <!--/ContentTemplate-->
 </HubSection>
 
- <HubSection x:Uid="HubSection" Header="Synchronize" DataContext="{x:Bind SyncView}">
+ <!--x:Uid="HubSection" DataContext="{x:Bind SyncView}"-->
+ <HubSection Header="Synchronize">
 
     <!--HeaderTemplate>
     <ThemeResource ResourceKey="HubSectionHeaderTemplate" />
     </HeaderTemplate-->
     <!--ContentTemplate-->
     <DataTemplate>
-    <!--Template-->
-        <Grid>       
+                    <StackPanel>
+                        <!--Grid-->       
        
-                <Grid Row="0" ColumnSpan="3">
+                <!--Grid Row="0" ColumnSpan="3"-->
                     
                 <Image x:Name="Device" 
                        VerticalAlignment="Center" 
@@ -359,63 +329,62 @@ VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0" Background="
                            FontSize="15" Text="{x:Bind ConnectionText}">
                 </TextBlock>
 
-                            <TextBlock x:Name="DeviceText" Foreground="Cyan"
-                           TextWrapping="NoWrap" 
-                           FontSize="15" Text="{x:Bind DeviceText}"/>
+                <TextBlock x:Name="DeviceText" Foreground="Cyan"
+                    TextWrapping="NoWrap" 
+                    FontSize="15" Text="{x:Bind DeviceText}"/>
 
 
-                            <TextBlock x:Name="StatusText" Foreground="Cyan" 
-                            TextWrapping="NoWrap" FontSize="15"
-                            Text="{x:Bind StatusText}"
-                            />
+                    <TextBlock x:Name="StatusText" Foreground="Cyan" 
+                        TextWrapping="NoWrap" FontSize="15"
+                        Text="{x:Bind StatusText}"
+                        />
 
+                    <!--x:Bind common:SyncProgress, Mode=TwoWay-->
+                        <ProgressBar x:Name="SyncProgress" Height="11" Minimum="0" 
+                                    Maximum="100" Foreground="#FFFF8800" 
+                                    Background="Transparent" 
+                                    Value="0.0"/>
 
-                            <ProgressBar x:Name="SyncProgress" Height="11" Minimum="0" 
-                                         Maximum="100" Foreground="#FFFF8800" 
-                                         Background="Transparent" 
-                                         Value=" x:Bind common:SyncProgress, Mode=TwoWay ">
-                               
-                            </ProgressBar>
-                       
-                </Grid>
+                        <!--/Grid-->
 
                         <!--  IsEnabled="{x:Bind common:SyncView.Enabled}"
                           IsChecked="{x:Bind CleanupSensorLog, Mode=TwoWay}"-->
-                            <CheckBox x:Name="cbCleanup" HorizontalAlignment="Left" 
-                          VerticalAlignment="Center" 
-                        >
+                    <CheckBox x:Name="cbCleanup" HorizontalAlignment="Left" 
+                          VerticalAlignment="Center">
                    
                  
-                        <TextBlock x:Uid="CleanupText" TextWrapping="Wrap" />
+                            <TextBlock x:Uid="CleanupText" TextWrapping="Wrap" />
                  
-                </CheckBox>
+                    </CheckBox>
 
-                        <!--
-                         IsEnabled="{x:Bind common:SyncViewModel.Enabled}"
-                          IsChecked="{x:Bind common:SyncViewModel.StoreSensorLogLocally, Mode=TwoWay}"
-                        -->
-                            <CheckBox x:Name="cbStoreLog" HorizontalAlignment="Left" 
-                          VerticalAlignment="Center"
-                         >
+                            <!--
+                             IsEnabled="{x:Bind common:SyncViewModel.Enabled}"
+                              IsChecked="{x:Bind common:SyncViewModel.StoreSensorLogLocally, Mode=TwoWay}"
+                            -->
+                                <CheckBox x:Name="cbStoreLog" HorizontalAlignment="Left" 
+                              VerticalAlignment="Center"
+                             >
                    
-                        <TextBlock x:Uid="StoreLogText" TextWrapping="Wrap" />
+                            <TextBlock x:Uid="StoreLogText" TextWrapping="Wrap" />
                    
-                </CheckBox>
+                    </CheckBox>
 
-                        <!--IsEnabled="{x:Bind common:SyncViewModel.Enabled}"-->
-                            <Button x:Uid="Synchronize" x:Name="btnSync" HorizontalAlignment="Left" 
-                        VerticalAlignment="Center" Width="155" >
+                            <!--IsEnabled="{x:Bind common:SyncViewModel.Enabled}"-->
+                                <Button x:Uid="Synchronize" x:Name="btnSync" HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" Width="155" >
                    
-                </Button>
+                    </Button>
                  
-                <TextBlock x:Name="textConnectionInfo" TextWrapping="Wrap" FontSize="16" 
-                           Text=" x:Bind common:ConnectionLog ">
+                    <TextBlock x:Name="textConnectionInfo" TextWrapping="Wrap" FontSize="16" 
+                               Text=" x:Bind common:ConnectionLog ">
 
-                </TextBlock>
-  
-    </Grid>
-  <!--/Template-->
-  </DataTemplate>
+                    </TextBlock>
+
+                        </StackPanel>
+                            <!--/Grid-->
+      <!--/Template-->
+                        
+      </DataTemplate>
   <!--/ContentTemplate-->
   </HubSection>
 
@@ -424,8 +393,6 @@ VerticalAlignment="Top" Padding="0,0,0,0" BorderThickness="0,0,0,0" Background="
 </Grid>
 <!--/Content-->
 
-
-    <!--/Flyout-->
 </Page>
     
 <!--Page

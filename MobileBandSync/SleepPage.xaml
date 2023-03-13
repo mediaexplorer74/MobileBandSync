@@ -8,7 +8,8 @@
       xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting" 
       xmlns:common="using:MobileBandSync.Common" 
       x:Name="pageRoot" 
-      x:Class="MobileBandSync.SleepPage">
+      x:Class="MobileBandSync.SleepPage"
+      mc:Ignorable="d">
     
 <!--d:DataContext>
 <Binding Path="DefaultViewModel.Workout">

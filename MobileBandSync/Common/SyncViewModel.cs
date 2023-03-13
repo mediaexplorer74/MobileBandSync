@@ -35,16 +35,33 @@ namespace MobileBandSync.Common
 
     public SyncViewModel()
     {
-      this.ResourceLoader = ResourceLoader.GetForViewIndependentUse();
+        // Сводка:
+        //     Возвращает ResourceLoader для поддерева Resources основного объекта ResourceMap
+        //     текущего выполняющегося приложения. Этот ResourceLoader использует контекст по
+        //     умолчанию, не связанный ни с каким представлением.
+        //
+        // Возврат:
+        //     Загрузчик ресурсов для поддерева Resources основного объекта ResourceMap текущего
+        //     выполняющегося приложения. Этот ResourceLoader использует контекст по умолчанию,
+        //     не связанный ни с каким представлением. Невозможно использовать этот ResourceLoader
+        //     для извлечения любого ресурса, у которого имеются кандидаты ресурсов, пригодные
+        //     для масштабирования.
+
+        //this.ResourceLoader = ResourceLoader.GetForViewIndependentUse();
+
       this.Enabled = false;
       this.Connected = false;
-      this.ConnectionText = this.ResourceLoader.GetString("NotConnected");
+
+        //FIXIT
+        this.ConnectionText = "NotConnected";//this.ResourceLoader.GetString("NotConnected");
+
       this.DeviceText = "";
       this.StatusText = "";
       this.SyncProgress = 0.0;
     }
 
-    public ResourceLoader ResourceLoader { get; private set; }
+        //FIXIT
+    //public ResourceLoader ResourceLoader { get; private set; }
 
     public bool Enabled
     {
@@ -138,7 +155,10 @@ namespace MobileBandSync.Common
     public async Task<bool> StartDeviceSearch()
     {
       this.Connected = false;
-      this.ConnectionText = this.ResourceLoader.GetString("NotConnected");
+
+      //FIXIT
+      this.ConnectionText = "NotConnected";//this.ResourceLoader.GetString("NotConnected");
+
       this.DeviceText = "";
       this.StatusText = "";
       this.SyncProgress = 0.0;
@@ -148,8 +168,13 @@ namespace MobileBandSync.Common
         try
         {
           List<BandInterface> pairedBands = await this.BandClient.GetPairedBands();
-          if (pairedBands.Count > 0)
-            this.ConnectionText = this.ResourceLoader.GetString("SearchingDevice");
+
+            if (pairedBands.Count > 0)
+            {
+               //FIXIT
+               this.ConnectionText = "SearchingDevice";//this.ResourceLoader.GetString("SearchingDevice");
+            }
+          
           this.CurrentBand = (BandInterface) null;
           foreach (BandInterface band in pairedBands)
           {
@@ -173,7 +198,9 @@ namespace MobileBandSync.Common
 
         if (this.CurrentBand != null)
         {
-          string str = this.ResourceLoader.GetString("Connected");
+          // FIXIT
+          string str = "Connected";//this.ResourceLoader.GetString("Connected");
+
           string serialNumber = await this.CurrentBand.GetSerialNumber();
           this.ConnectionText = str + ": #" + serialNumber;
           str = (string) null;
@@ -184,7 +211,8 @@ namespace MobileBandSync.Common
         else
         {
           this.CurrentBand = (BandInterface) new Band<BandSocketUWP>("", "");
-          this.ConnectionText = this.ResourceLoader.GetString("NotConnected");
+
+          this.ConnectionText = "NotConnected";//this.ResourceLoader.GetString("NotConnected");
         }
       }
       return this.Connected;
@@ -209,7 +237,8 @@ namespace MobileBandSync.Common
       if (this.Connected && this.CurrentBand != null)
       {
         this.Enabled = false;
-        this.StatusText = this.ResourceLoader.GetString("Downloading");
+        //FIXIT
+        this.StatusText = "Downloading";//this.ResourceLoader.GetString("Downloading");
         WorkoutDataSource.BandName = this.CurrentBand.GetName();
 
         byte[] sensorLog = await this.CurrentBand.GetSensorLog(new Action<string>(this.Report), 
@@ -218,7 +247,9 @@ namespace MobileBandSync.Common
         if (sensorLog != null)
         {
           this.Report((string) null);
-          this.StatusText = this.ResourceLoader.GetString("Importing");
+
+          //FIXIT
+          this.StatusText = "Importing";//this.ResourceLoader.GetString("Importing");
           try
           {
             int length = sensorLog.Length;
@@ -229,10 +260,11 @@ namespace MobileBandSync.Common
             {
               if (workouts.Count > 0)
               {
-                this.StatusText = this.ResourceLoader.GetString("Storing") + " " 
-                                    + (object) workouts.Count + " " + (workouts.Count == 1 
-                                    ? (object) this.ResourceLoader.GetString("Workout")
-                                    : (object) this.ResourceLoader.GetString("Workouts"));
+                                //FIXIT
+                                this.StatusText = "Storing" + " " //this.ResourceLoader.GetString("Storing") + " " 
+                                + (object)workouts.Count + " " + (workouts.Count == 1
+                                ? "Workout"//(object) this.ResourceLoader.GetString("Workout")
+                                : "Workouts");//(object) this.ResourceLoader.GetString("Workouts"));
 
                 ulong stepLength = WorkoutDataSource.DataSource.SensorLogEngine.StepLength;
 

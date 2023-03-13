@@ -103,6 +103,7 @@ namespace MobileBandSync.Common
 
     public event SaveStateEventHandler SaveState;
 
+        /*
     public void OnNavigatedTo(NavigationEventArgs e)
     {
       Dictionary<string, object> dictionary = SuspensionManager.SessionStateForFrame(this.Frame);
@@ -115,16 +116,20 @@ namespace MobileBandSync.Common
           ++backStackDepth;
         if (this.LoadState == null)
           return;
-        this.LoadState((object) this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>) null));
+        this.LoadState((object) this, new LoadStateEventArgs(e.Parameter, 
+            (Dictionary<string, object>) null));
       }
       else
       {
         if (this.LoadState == null)
           return;
-        this.LoadState((object) this, new LoadStateEventArgs(e.Parameter, (Dictionary<string, object>) dictionary[this._pageKey]));
+        this.LoadState((object) this, new LoadStateEventArgs(e.Parameter, 
+            (Dictionary<string, object>) dictionary[this._pageKey]));
       }
     }
+        */
 
+        /*
     public void OnNavigatedFrom(NavigationEventArgs e)
     {
       Dictionary<string, object> dictionary1 = SuspensionManager.SessionStateForFrame(this.Frame);
@@ -135,5 +140,6 @@ namespace MobileBandSync.Common
       Dictionary<string, object> dictionary2 = pageState;
       dictionary1[pageKey] = (object) dictionary2;
     }
+        */
   }
 }

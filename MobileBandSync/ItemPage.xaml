@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       x:Name="pageRoot" 
-      x:Class="MobileBandSync.ItemPage">
+      x:Class="MobileBandSync.ItemPage"
+      mc:Ignorable="d">
     
     <!--DataContext>
         <Binding Path="DefaultViewModel.Item">

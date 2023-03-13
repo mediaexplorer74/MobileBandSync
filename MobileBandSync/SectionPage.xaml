@@ -23,7 +23,8 @@ xmlns:data="using:MobileBandSync.Data"
 xmlns:common="using:MobileBandSync.Common" 
 x:Class="MobileBandSync.SectionPage"
 DataContext="{x:Bind DefaultViewModel}"
-Background="{ThemeResource HubBackgroundImageBrush}">
+Background="{ThemeResource HubBackgroundImageBrush}"
+mc:Ignorable="d">
 
     <Grid x:Name="pageRoot" Margin="0,10,0,0">
         <Grid Row="1">

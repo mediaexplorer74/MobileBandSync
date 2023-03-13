@@ -41,37 +41,21 @@ namespace MobileBandSync
   {
     private readonly NavigationHelper navigationHelper;
     private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
-    private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
+    //private readonly ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView("Resources");
     public WorkoutData PageWorkoutData = new WorkoutData();
    
-    //private DatePicker startDatePicker;
    
-    //private DatePicker endDatePicker;
-   
-    //private MapControl MapPicker;
-   
-    //private CheckBox chkMap;
-   
-    //private CheckBox chkWalk;
-    
-    //private CheckBox chkSleep;
-    
-    //private CheckBox chkRun;
-    
-    //private CheckBox chkBike;
-    
-    //private Grid LayoutRoot;
-    
-    //private Hub Hub;
 
     public HubPage()
     {
       this.InitializeComponent();
       //DisplayInformation.AutoRotationPreferences((DisplayOrientations) 2);
       //this.NavigationCacheMode((NavigationCacheMode) 1);
+      
       this.navigationHelper = new NavigationHelper((Page) this);
       this.navigationHelper.LoadState += new LoadStateEventHandler(this.NavigationHelper_LoadState);
       this.navigationHelper.SaveState += new SaveStateEventHandler(this.NavigationHelper_SaveState);
+
       this.SyncView = new SyncViewModel();
       this.MapServiceToken = "AobMbD2yKlST1QB_mh1mPfpnJGDtpm0lefHMTVPqU0NQR58-xEVO3KhAaOaqJL6y";
       WorkoutDataSource.SetMapServiceToken(this.MapServiceToken);
@@ -164,8 +148,11 @@ namespace MobileBandSync
 
     private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
     {
-      if (!this.Frame.Navigate(typeof (ItemPage), (object) ((TrackItem) e.ClickedItem).UniqueId))
-        throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
+        if (!this.Frame.Navigate(typeof(ItemPage), (object)((TrackItem)e.ClickedItem).UniqueId))
+        {
+           //throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
+            throw new Exception("Exception Message : Navigation Failed!");
+        }
     }
 
     public async void btnSync_Click(object sender, RoutedEventArgs e)
@@ -267,9 +254,10 @@ namespace MobileBandSync
       dataSource.CurrentFilter = workoutFilterData;
       bool? isChecked = ((ToggleButton) this.chkMap).IsChecked;
       bool flag = true;
+
       if ((isChecked.GetValueOrDefault() == flag ? (isChecked.HasValue ? 1 : 0) : 0) != 0)
       {
-        WorkoutDataSource.DataSource.CurrentFilter.SetBounds(this.MapPicker);
+        //WorkoutDataSource.DataSource.CurrentFilter.SetBounds(this.MapPicker);
         WorkoutDataSource.DataSource.CurrentFilter.MapSelected = true;
       }
       else
